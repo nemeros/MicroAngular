@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<!-- header code -->
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.5/css/bootstrap.css">
+    <title>Menu Dynamic</title>
+</head>
+<body ng-controller="MenuController">
+
+<div class="row">
+	<div class="container">
+		<div id="menuListId" class="list-group">
+			<div class="list-group-item">
+				<div ng-repeat="item in menu" class="list-group-item" style="margin-top:16px">
+					 <div class="row-content">
+					 	<h4 class="list-group-item-heading">{{item.menuParent}}</h4>
+						<p class="list-group-item-text">{{item.menuName}}</p>
+						<a href={{item.serviceUrl}}>Service</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+	<script type="text/javascript" src="webjars/jquery/2.1.4/jquery.js"></script>
+	<script type="text/javascript" src="webjars/angularjs/1.4.6/angular.min.js"></script>
+	<script type="text/javascript" src="webjars/angularjs/1.4.6/angular-resource.min.js"></script>
+	<script type="text/javascript" src="resources/js/app.js"></script>
+</body>
+</html>
