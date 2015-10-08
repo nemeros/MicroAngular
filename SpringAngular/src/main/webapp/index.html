@@ -16,23 +16,42 @@
 
 
 <div class="nav nav-pills" style="float:left" >
+	
 	<div id="menuListId" class="list-group">
+
 		<div class="list-group-item">
-			<div ng-repeat="item in menu" class="list-group-item" style="margin-top:16px">
+		 <ul>
+			<li ng-repeat="item in menu | filter:query | orderBy:orderProp" class="list-group-item" style="margin-top:16px">
+				
 				 <div class="row-content">
 				 	<h4 class="list-group-item-heading">{{item.menuParent}}</h4>
 					<p class="list-group-item-text">{{item.menuName}}</p>
 					<a href={{item.serviceUrl}}>Service</a>
 				</div>
-			</div>
+				
+			</li>
+			</ul>
 		</div>
 	</div>
 </div>
 
-<div class="row">
-	<div class="container">
-		<h1>GGGG</h1>
+<div class="container">
+	<div class="row col-lg-12">
+			Search : <input ng-model="query"/>
+			Sort By: 
+			<select ng-model="orderProp">
+				<option value="-menuParent">Alphabetical</option>
+				<option value="-menuName">Alphabetical</option>
+			</select>
+		
+		</div>
+	<div class="row col-lg-12">
+		<h1>{{query}} - {{orderProp}}</h1>
+	</div>
+	<div class="row col-lg-12">
+		<pre>{{menu}}</pre>
 	</div>
 </div>
+	
 </body>
 </html>
