@@ -10,3 +10,15 @@ appService.service('MenuService', function ($log, $resource) {
         }
     }
 });
+
+
+appService.service('ItemService', function ($log, $resource) {
+    return {
+        getAll: function () {
+            var itemResource = $resource('http://localhost:9080/items', {}, {
+                query: {method: 'GET', params: {}, isArray: true}
+            });
+            return itemResource.query();
+        }
+    }
+});

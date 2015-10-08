@@ -16,24 +16,38 @@ public class HelloService {
 
 	@RequestMapping(value="menu" ,method={RequestMethod.GET}, produces="application/json")
 	@ResponseBody
-	public List<MenuPojo> helloService(){
+	public List<MenuPojo> helloService(){	
+		return generateMenu();
+	}
+	
+	private List<MenuPojo> generateMenu(){
+		List<MenuPojo> retour = new ArrayList<MenuPojo>();
+		retour.add(new MenuPojo("animal"));
+		retour.add(new MenuPojo("fleur"));
+		retour.add(new MenuPojo("machine"));
 		
-		List<MenuPojo> lMenu = new ArrayList<MenuPojo>();
-		lMenu.add(new MenuPojo("orchidé", "fleur", "http://localhost:9080/orchide"));
-		lMenu.add(new MenuPojo("yuka", "fleur"));
-		
-		return lMenu;
+		return retour;
 	}
 	
 	
-	@RequestMapping(value="orchide", method={RequestMethod.GET}, produces="application/json")
+	@RequestMapping(value="items", method={RequestMethod.GET}, produces="application/json")
 	@ResponseBody
 	public List<ItemPojo> getOrchi(){
 		
-		List<ItemPojo> lItem = new ArrayList<ItemPojo>();
-		lItem.add(new ItemPojo("Balius"));
-		lItem.add(new ItemPojo("Costemp"));
+		return generateItem();
+	}
+	
+	
+	private List<ItemPojo> generateItem(){
+		List<ItemPojo> retour = new ArrayList<ItemPojo>();
 		
-		return lItem;
+		retour.add(new ItemPojo("orchidé", "fleur"));
+		retour.add(new ItemPojo("yuka", "fleur"));
+		retour.add(new ItemPojo("chat", "animal"));
+		retour.add(new ItemPojo("chient", "animal"));
+		retour.add(new ItemPojo("voiture", "machine"));
+		retour.add(new ItemPojo("moto", "machine"));
+		
+		return retour;
 	}
 }
