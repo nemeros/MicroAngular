@@ -18,7 +18,14 @@ appService.service('ItemService', function ($log, $resource) {
             var itemResource = $resource('http://localhost:9080/items', {}, {
                 query: {method: 'GET', params: {}, isArray: true}
             });
-            return itemResource.query();
-        }
+            
+            return itemResource.query(); 
+        },
+        getItem: function(id) {
+        	var itemResource = $resource('http://localhost:9080/items/:itemId', {},{
+        		query: {method:'GET', params:{itemId:id}, isArray:false}
+        	});
+        	return itemResource.query();
+        }    	
     }
 });

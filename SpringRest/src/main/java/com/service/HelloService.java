@@ -3,6 +3,8 @@ package com.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,10 +15,12 @@ import com.pojo.MenuPojo;
 
 @RestController("/")
 public class HelloService {
+	
+	private static final Logger log = Logger.getLogger(HelloService.class);
 
 	@RequestMapping(value="menu" ,method={RequestMethod.GET}, produces="application/json")
 	@ResponseBody
-	public List<MenuPojo> helloService(){	
+	public List<MenuPojo> getMenu(){	
 		return generateMenu();
 	}
 	
@@ -32,21 +36,36 @@ public class HelloService {
 	
 	@RequestMapping(value="items", method={RequestMethod.GET}, produces="application/json")
 	@ResponseBody
-	public List<ItemPojo> getOrchi(){
+	public List<ItemPojo> getAllItem(){
 		
 		return generateItem();
 	}
 	
+	@RequestMapping(value="items/{id}", method={RequestMethod.GET}, produces="application/json")
+	@ResponseBody
+	public ItemPojo getSpecificItem(@PathVariable("id") int id){
+		List<ItemPojo> lItem = generateItem();
+		 ItemPojo retour = null;
+		 
+		 for(ItemPojo i : lItem){
+			 if(i.getId() == id){
+				 retour = i;
+				 break;
+			 }
+		 }
+		 
+		return retour;
+	}
 	
 	private List<ItemPojo> generateItem(){
 		List<ItemPojo> retour = new ArrayList<ItemPojo>();
 		
-		retour.add(new ItemPojo("orchidé", "fleur"));
-		retour.add(new ItemPojo("yuka", "fleur"));
-		retour.add(new ItemPojo("chat", "animal"));
-		retour.add(new ItemPojo("chient", "animal"));
-		retour.add(new ItemPojo("voiture", "machine"));
-		retour.add(new ItemPojo("moto", "machine"));
+		retour.add(new ItemPojo(1, "orchidé", "fleur", false));
+		retour.add(new ItemPojo(2, "yuka", "fleur", false));
+		retour.add(new ItemPojo(3, "chat", "animal", true));
+		retour.add(new ItemPojo(4, "chient", "animal", true));
+		retour.add(new ItemPojo(5, "voiture", "machine", false));
+		retour.add(new ItemPojo(6, "moto", "machine",true));
 		
 		return retour;
 	}

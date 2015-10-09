@@ -7,17 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="webjars/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="webjars/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+     <link rel="stylesheet" href="resources/css/animations.css">
     <title>Menu Dynamic</title>
     
     <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.5/js/bootstrap.js"></script>
 	<script type="text/javascript" src="webjars/angularjs/1.4.6/angular.min.js"></script>
 	<script type="text/javascript" src="webjars/angularjs/1.4.6/angular-resource.min.js"></script>
+	<script type="text/javascript" src="webjars/angularjs/1.4.6/angular-mocks.js"></script>
+	<script type="text/javascript" src="webjars/angularjs/1.4.6/angular-route.min.js"></script>
+	<script type="text/javascript" src="webjars/angularjs/1.4.6/angular-animate.min.js"></script>
 	<script type="text/javascript" src="resources/js/app.js"></script>
 	<script type="text/javascript" src="resources/js/service.js"></script>
 	<script type="text/javascript" src="resources/js/controller.js"></script>
+	<script type="text/javascript" src="resources/js/filters.js"></script>
+	<script type="text/javascript" src="resources/js/animations.js"></script>
 </head>
-<body role="document">
+<body role="document" ng-cloak>
 
 
 	<nav class="nav navbar-inverse navbar-fixed-top" ng-controller="MenuController">
@@ -28,34 +34,17 @@
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li ng-repeat="item in menu">
-						 	<a href="#">{{item.menuName}}</a> 
+						 	<a href="#/">{{item.menuName}}</a> 
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	
-	<div class="container" role="main" style="margin-top:80px" ng-controller="ItemController">
-		<div class="jumbotron">
-			<div class="container-fluid">
-				<h3 class="page-header">Liste</h3>
-				<div class="row">
-					<div class="col-md-2" ng-repeat="item in items | filter:query | orderBy:orderProp">
-						<h4>{{item.nom}}</h4>
-						<p>{{item.category}}</p>					
-					</div>				
-				</div>
-			</div>			
+	<div class="container" role="main" style="margin-top:80px">	
+		<div class="view-container">
+			<div ng-view class="view-frame"></div>
 		</div>
-	
-		<div class="container">
-			Search input : <input ng-model="query"/>
-			Order : <select ng-model="orderProp">
-				<option value="nom">nom Asc</option>
-				<option value="-nom">nom Desc</option>			
-			</select>
-		</div>
-	
 	</div>
 </body>
 </html>
