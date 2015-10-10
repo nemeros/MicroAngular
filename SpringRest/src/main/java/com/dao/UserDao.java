@@ -14,7 +14,7 @@ public class UserDao extends AbstractDao {
 
 	public List<UserPojo> getList(){
 		StringBuilder query = new StringBuilder(100);
-		query.append("Select * from T_USER");
+		query.append("Select id, nom, id_job from T_USER");
 		
 		
 		return this.getJdbcTemplate().query(query.toString(), new RowMapper<UserPojo>(){
@@ -23,8 +23,7 @@ public class UserDao extends AbstractDao {
 				return new UserPojo(
 						rs.getInt("id"),
 						rs.getString("nom"),
-						rs.getString("prenom"),
-						rs.getInt("age")
+						rs.getInt("id_job")
 						);
 			}			
 		});

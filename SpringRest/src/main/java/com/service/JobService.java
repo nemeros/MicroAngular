@@ -9,22 +9,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dao.UserDao;
-import com.pojo.UserPojo;
+import com.dao.JobDao;
+import com.pojo.JobPojo;
 
-@RestController("/users")
-public class UserService {
+@RestController("/jobs")
+public class JobService {
 	
-	private final static Logger log = Logger.getLogger(UserService.class);
+	private final static Logger log = Logger.getLogger(JobService.class);
+	
 	
 	@Autowired
-	private UserDao userDao;
+	private JobDao jobDao;
 	
-	
-	@RequestMapping(value="users", method={RequestMethod.GET}, produces="application/json")
+	@RequestMapping(value="jobs", method=RequestMethod.GET, produces="application/json")
 	@ResponseBody
-	public List<UserPojo> getUsers(){
-		log.info("Debut - getUsers");
-		return userDao.getList();
+	public List<JobPojo> getAll(){
+		log.info("getAll - debut");
+		return jobDao.getList();
 	}
+
 }

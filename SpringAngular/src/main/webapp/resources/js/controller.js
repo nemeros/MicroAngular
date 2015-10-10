@@ -19,8 +19,10 @@ appController.controller('ItemDetailController', function($scope, $log, $routePa
 });
 
 
-appController.controller('UserListController', function($scope, $log, $routeParams, UserService) {
+appController.controller('UserListController', function($scope, $log, $routeParams, JobService, UserService) {
 		$scope.users = UserService.getAll();
+		
+		$scope.jobs = JobService.getAll();
 		
 		$scope.fn = function(text){
 			alert(text);

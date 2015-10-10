@@ -41,3 +41,15 @@ appService.service('UserService', function($log, $resource){
 		}
 	}
 });
+
+
+appService.service('JobService', function($log, $resource){
+	return{
+		getAll: function(){
+			var jobResource = $resource('http://localhost:9080/jobs', {}, {
+				query: {method:'GET', params:{}, isArray:true}
+			});
+			return jobResource.query();
+		}
+	}
+});
