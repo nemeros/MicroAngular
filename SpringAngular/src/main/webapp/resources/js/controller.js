@@ -18,3 +18,11 @@ appController.controller('ItemDetailController', function($scope, $log, $routePa
 	};
 });
 
+
+appController.controller('UserListController', function($scope, $log, $routeParams, UserService) {
+		$scope.users = UserService.getAll();
+		
+		$scope.fn = function(text){
+			alert(text);
+		};
+});

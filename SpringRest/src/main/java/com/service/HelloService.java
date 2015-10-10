@@ -17,7 +17,8 @@ import com.pojo.MenuPojo;
 public class HelloService {
 	
 	private static final Logger log = Logger.getLogger(HelloService.class);
-
+	
+	
 	@RequestMapping(value="menu" ,method={RequestMethod.GET}, produces="application/json")
 	@ResponseBody
 	public List<MenuPojo> getMenu(){	
@@ -28,7 +29,7 @@ public class HelloService {
 		List<MenuPojo> retour = new ArrayList<MenuPojo>();
 		retour.add(new MenuPojo("animal"));
 		retour.add(new MenuPojo("fleur"));
-		retour.add(new MenuPojo("machine"));
+		retour.add(new MenuPojo("users"));
 		
 		return retour;
 	}

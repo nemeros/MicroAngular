@@ -4,6 +4,10 @@ var myApp = angular.module('myApp', ['ngResource', 'ngRoute', 'myApp.service',
 myApp.config(['$routeProvider',
  function($routeProvider) {
 	$routeProvider.
+		when('/users', {
+			templateUrl :'partials/user-list.html',
+			controller: 'UserListController'
+		}).
 		when('/items', {
 			templateUrl: 'partials/item-list.html',
 			controller: 'ItemController'		

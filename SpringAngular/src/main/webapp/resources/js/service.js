@@ -29,3 +29,15 @@ appService.service('ItemService', function ($log, $resource) {
         }    	
     }
 });
+
+
+appService.service('UserService', function($log, $resource){
+	return{
+		getAll: function(){
+			var userResource = $resource('http://localhost:9080/users', {}, {
+				query: {method:'GET', params:{}, isArray:true}
+			});
+			return userResource.query();
+		}
+	}
+});

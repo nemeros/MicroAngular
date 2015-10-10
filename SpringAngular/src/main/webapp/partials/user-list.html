@@ -1,0 +1,37 @@
+<div class="container">
+	<form>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon"><i class="glyphicon glyphicon-pushpin" aria-hidden="true"></i></div>
+				<input type="text" class="form-control" placeholder="Search By name" ng-model="searchName">
+			</div>	
+		</div>
+
+		<table class="table table-striped" ng-cloak>
+			<thead>
+				<tr>
+					<th class="col-md-2">
+						<a href="" ng-click="sortType = 'nom'; isReserse = !isReserse">nom</a>
+						<span ng-show="sortType == 'nom' && isReserse" class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
+						<span ng-show="sortType == 'nom' && !isReserse" class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span>
+					</th>
+					<th class="col-md-2">
+						<a href="" ng-click="sortType = 'prenom'; isReserse = !isReserse">prenom</a>
+						<span ng-show="sortType == 'prenom' && isReserse" class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
+						<span ng-show="sortType == 'prenom' && !isReserse" class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="user in users | filter:searchName | orderBy:sortType:isReserse">
+					<td>
+						<a href="" ng-click="fn(user.id)">{{user.nom}}</a> 
+					</td>
+					<td>{{user.prenom}}</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
+	</form>
+</div>

@@ -1,0 +1,1 @@
+create table T_USER (id integer identity, nom varchar(50), prenom varchar(50), age integer);
