@@ -38,6 +38,19 @@ appService.service('UserService', function($log, $resource){
 				query: {method:'GET', params:{}, isArray:true}
 			});
 			return userResource.query();
+		},
+		getUser: function(id){
+			var itemResource = $resource('http://localhost:9080/users/:userId', {},{
+        		query: {method:'GET', params:{userId:id}, isArray:false}
+        	});
+        	return itemResource.query();
+		},
+		saveUser:function(user){
+			$log.info("Update user num : " + user.id);
+			var itemResource = $resource('http://localhost:9080/users/:userId', {},{
+        		query: {method:'POST', params:{userId:user.id, user:user}, isArray:false}
+        	});
+        	return itemResource.query();
 		}
 	}
 });

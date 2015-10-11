@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngResource', 'ngRoute', 'myApp.service', 
+var myApp = angular.module('myApp', ['ngResource', 'ngRoute', 'myApp.service', 'ui.bootstrap',
                                      'myApp.animation', 'myApp.controller', 'myApp.filter']);
     
 myApp.config(['$routeProvider',

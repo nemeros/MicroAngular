@@ -32,8 +32,8 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="user in users | filter:{nom: search.name, jobId: search.jobTitle} | orderBy:sortType:isReserse">
-					<td>
-						<a href="" ng-click="fn(user.id)">{{user.nom}}</a> 
+					<td ng-click="detailModal(user.id)">
+						{{user.nom}}
 					</td>
 					<td>{{jobs[user.jobId].nom}}</td>
 				</tr>

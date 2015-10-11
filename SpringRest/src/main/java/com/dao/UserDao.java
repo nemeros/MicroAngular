@@ -29,4 +29,27 @@ public class UserDao extends AbstractDao {
 		});
 	}	
 	
+	
+	public UserPojo getUser(Integer id){
+		StringBuilder query = new StringBuilder(100);
+		query.append("Select id, nom, prenom, age, id_job from T_USER where id = ? ");
+		
+		
+		return this.getJdbcTemplate().queryForObject(query.toString(),  new Object[]{id}, new RowMapper<UserPojo>(){
+			@Override
+			public UserPojo mapRow(ResultSet rs, int rownum) throws SQLException{
+				return new UserPojo(rs.getInt("id"),
+						rs.getString("nom"),
+						rs.getString("prenom"),
+						rs.getInt("age"),
+						rs.getInt("id_job"));
+			}
+		});
+	}
+	
+	public void saveUser(Integer id, UserPojo user){
+		StringBuilder query = new StringBuilder(100);
+		query.append("UPDATE T_USER SET nom = ?, prenom = ?, age = ?, id_job = ? WHERE id = ?");
+		this.getJdbcTemplate().update(query.toString(), user.getNom(), user.getPrenom(), user.getAge(), user.getJobId(), user.getId());
+	}
 }
