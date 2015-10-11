@@ -46,11 +46,12 @@ appService.service('UserService', function($log, $resource){
         	return itemResource.query();
 		},
 		saveUser:function(user){
-			$log.info("Update user num : " + user.id);
 			var itemResource = $resource('http://localhost:9080/users/:userId', {},{
-        		query: {method:'POST', params:{userId:user.id, user:user}, isArray:false}
+        		save: {method:'POST', headers: {
+                    'Content-Type': 'application/json'
+                }, params:{userId:user.id}, isArray:false}
         	});
-        	return itemResource.query();
+        	return itemResource.save(user);
 		}
 	}
 });

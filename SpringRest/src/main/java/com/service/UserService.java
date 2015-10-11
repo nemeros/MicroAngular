@@ -39,7 +39,7 @@ public class UserService {
 		return userDao.getUser(id);
 	}
 	
-	@RequestMapping(value="users/{idUser}", method={RequestMethod.POST},consumes="application/json", produces="application/json")
+	@RequestMapping(value="users/{idUser}", method={RequestMethod.POST},consumes={"application/json", "text/html"}, produces="application/json")
 	@ResponseStatus(value = HttpStatus.OK)
 	public void saveUser(@PathVariable("idUser") Integer id, @RequestBody UserPojo user){
 		log.info("Debut sauvegarde");

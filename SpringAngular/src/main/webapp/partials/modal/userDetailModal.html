@@ -1,5 +1,5 @@
 <div class="modal-header">
-	<h2>Détail Utilisateurs</h2>
+	<h2>D&eacute;tail Utilisateurs</h2>
 </div>
 <form name="userDetailForm" novalidate>
 <div class="modal-body" ng-cloak>
@@ -21,10 +21,9 @@
 		<select ng-model="userDetail.jobId" 
 			ng-options="job.id as job.nom for job in jobs"  class="form-control" aria-describedby="basic-addon4" required>
 		</select>
-		{{userDetail.jobId}}
 	</div>
 	<div class="input-group">
-		valeur de la form : {{userDetailForm.$valid}}
+		Validite de la form : {{userDetailForm.$valid}}
 	</div>
 </div>
 <div class="modal-footer">

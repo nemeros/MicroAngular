@@ -45,10 +45,9 @@ appController.controller('UserListController', function($scope, $log, $uibModal,
 			    	
 			    	$scope.ok = function() {
 			                //On fait appel à la fonction du scope parent qui permet de supprimer l'élément.
-			    			$log.info("fermeture modal");
+			    			$log.info("sauvegarde + fermeture modal");
 			    			
 			    			//Sauvegarde de l'utilisateur
-			    			$log.info("Valeur user : " + $scope.userDetail);
 			    			UserService.saveUser($scope.userDetail);
 			    			
 			                //Fermeture de la fenêtre modale
